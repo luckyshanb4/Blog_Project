@@ -19,7 +19,9 @@ app.use(express.static("public"));
 
 
 app.get("/",function(req,res){
-  res.render('home',{startingContent:homeStartingContent});
+  res.render('home',{startingContent:homeStartingContent,postsSent:posts});
+
+  
 })
 
 
@@ -44,11 +46,23 @@ app.post('/compose',function(req,res){
   }
 
   posts.push(post);
+  // res.render('home',{startingContent:homeStartingContent,postsSent:posts});
   
-  res.render('home',{startingContent:homeStartingContent,postsSent:posts});
-  
+  res.redirect("/");
   
 })
+
+app.get('/post/:postName',function(req,res){
+  posts.forEach(function(post){
+    if(post.title===req.params.postName){
+      console.log("Match Found!");
+    }
+
+    console.log(req.params);
+  })
+  
+})
+
 
 
 app.listen(3000, function() {
