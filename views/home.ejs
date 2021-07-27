@@ -7,8 +7,14 @@
 
 <% postsSent.forEach(function(post){ %>
 
+    <% formattedContents = post.content.substring(0, 100) + "...";%>
     <h1><%=post.title %></h1>
-    <p><%=post.content %></p>
+    <p ><%=formattedContents%> 
+        <% let link1= "/post/"+post.title %>
+       <a href= "<%= link1 %>" > 
+            Read More
+        </a>
+    </p>
 <%}); %>
 
 <%- include('partials//footer') -%>
