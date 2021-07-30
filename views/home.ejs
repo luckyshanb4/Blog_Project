@@ -7,10 +7,10 @@
 
 <% postsSent.forEach(function(post){ %>
 
-    <% formattedContents = post.content.substring(0, 100) + "...";%>
+    <% formattedContents = post.body.substring(0, 100) + "...";%>
     <h1><%=post.title %></h1>
     <p ><%=formattedContents%> 
-        <% let link1= "/post/"+post.title %>
+        <% let link1= "/post/"+post._id %>
        <a href= "<%= link1 %>" > 
             Read More
         </a>
